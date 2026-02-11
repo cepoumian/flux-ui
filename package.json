@@ -1,0 +1,16 @@
+{
+  "name": "flux-ui-workspace",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "dev": "npm run dev --workspace=@flux-ui/react",
+    "build": "npm run build --workspace=@flux-ui/react",
+    "playground": "vite playground"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
