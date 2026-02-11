@@ -1,0 +1,84 @@
+:root {
+  /* ===== COLOR PALETTE ===== */
+
+  /* Primary (Blue) */
+  --flux-color-primary-50: #eff6ff;
+  --flux-color-primary-100: #dbeafe;
+  --flux-color-primary-200: #bfdbfe;
+  --flux-color-primary-500: #3b82f6;
+  --flux-color-primary-600: #2563eb;
+  --flux-color-primary-700: #1d4ed8;
+  --flux-color-primary-800: #1e40af;
+
+  /* Neutral (Gray) */
+  --flux-color-neutral-50: #f9fafb;
+  --flux-color-neutral-100: #f3f4f6;
+  --flux-color-neutral-200: #e5e7eb;
+  --flux-color-neutral-300: #d1d5db;
+  --flux-color-neutral-700: #374151;
+  --flux-color-neutral-800: #1f2937;
+  --flux-color-neutral-900: #111827;
+
+  /* Danger (Red) */
+  --flux-color-danger-600: #dc2626;
+  --flux-color-danger-700: #b91c1c;
+
+  /* Semantic Colors */
+  --flux-color-bg-primary: var(--flux-color-primary-600);
+  --flux-color-bg-primary-hover: var(--flux-color-primary-700);
+  --flux-color-bg-secondary: var(--flux-color-neutral-200);
+  --flux-color-bg-secondary-hover: var(--flux-color-neutral-300);
+  --flux-color-bg-ghost-hover: var(--flux-color-neutral-100);
+  --flux-color-bg-danger: var(--flux-color-danger-600);
+  --flux-color-bg-danger-hover: var(--flux-color-danger-700);
+
+  --flux-color-text-primary: white;
+  --flux-color-text-secondary: var(--flux-color-neutral-900);
+  --flux-color-text-ghost: var(--flux-color-neutral-700);
+
+  /* ===== SPACING SCALE ===== */
+  --flux-space-1: 0.25rem; /* 4px */
+  --flux-space-2: 0.5rem; /* 8px */
+  --flux-space-3: 0.75rem; /* 12px */
+  --flux-space-4: 1rem; /* 16px */
+  --flux-space-5: 1.25rem; /* 20px */
+  --flux-space-6: 1.5rem; /* 24px */
+  --flux-space-8: 2rem; /* 32px */
+
+  /* ===== TYPOGRAPHY ===== */
+  --flux-font-size-sm: 0.875rem; /* 14px */
+  --flux-font-size-base: 1rem; /* 16px */
+  --flux-font-size-lg: 1.125rem; /* 18px */
+
+  --flux-font-weight-medium: 500;
+  --flux-font-weight-semibold: 600;
+
+  --flux-line-height-none: 1;
+  --flux-line-height-tight: 1.25;
+  --flux-line-height-normal: 1.5;
+
+  /* ===== BORDER RADIUS ===== */
+  --flux-radius-sm: 0.25rem; /* 4px */
+  --flux-radius-md: 0.375rem; /* 6px */
+  --flux-radius-lg: 0.5rem; /* 8px */
+  --flux-radius-full: 9999px;
+
+  /* ===== TRANSITIONS ===== */
+  --flux-transition-fast: 100ms;
+  --flux-transition-base: 200ms;
+  --flux-transition-slow: 300ms;
+
+  --flux-transition-timing: ease;
+
+  /* ===== SHADOWS (for future use) ===== */
+  --flux-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --flux-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --flux-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+  /* ===== Z-INDEX SCALE (for future use) ===== */
+  --flux-z-base: 0;
+  --flux-z-dropdown: 1000;
+  --flux-z-modal: 2000;
+  --flux-z-popover: 3000;
+  --flux-z-tooltip: 4000;
+}
