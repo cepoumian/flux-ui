@@ -1,0 +1,109 @@
+/* Base button styles */
+.flux-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--flux-radius-md);
+  font-weight: var(--flux-font-weight-medium);
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color var(--flux-transition-base) var(--flux-transition-timing),
+    transform var(--flux-transition-fast) var(--flux-transition-timing);
+  line-height: var(--flux-line-height-none);
+  white-space: nowrap;
+}
+
+/* Focus styles */
+.flux-button[data-focus-visible] {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Disabled styles */
+.flux-button[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Active state */
+.flux-button:active,
+.flux-button[data-active] {
+  transform: scale(0.98);
+}
+
+/* === VARIANTS === */
+
+/* Primary */
+.flux-button--primary {
+  background-color: var(--flux-color-bg-primary);
+  color: var(--flux-color-text-primary);
+}
+
+.flux-button--primary:hover:not([aria-disabled="true"]) {
+  background-color: var(--flux-color-bg-primary-hover);
+}
+
+/* Secondary */
+.flux-button--secondary {
+  background-color: var(--flux-color-bg-secondary);
+  color: var(--flux-color-text-secondary);
+}
+
+.flux-button--secondary:hover:not([aria-disabled="true"]) {
+  background-color: var(--flux-color-bg-secondary-hover);
+}
+
+/* Ghost */
+.flux-button--ghost {
+  background-color: transparent;
+  color: var(--flux-color-text-ghost);
+}
+
+.flux-button--ghost:hover:not([aria-disabled="true"]) {
+  background-color: var(--flux-color-bg-ghost-hover);
+}
+
+/* Danger */
+.flux-button--danger {
+  background-color: var(--flux-color-bg-danger);
+  color: var(--flux-color-text-primary);
+}
+
+.flux-button--danger:hover:not([aria-disabled="true"]) {
+  background-color: var(--flux-color-bg-danger-hover);
+}
+
+/* === SIZES === */
+
+.flux-button--sm {
+  padding: var(--flux-space-1) var(--flux-space-3);
+  font-size: var(--flux-font-size-sm);
+}
+
+.flux-button--md {
+  padding: var(--flux-space-2) var(--flux-space-4);
+  font-size: var(--flux-font-size-base);
+}
+
+.flux-button--lg {
+  padding: var(--flux-space-3) var(--flux-space-6);
+  font-size: var(--flux-font-size-lg);
+}
+
+/* Loading state */
+.flux-button__spinner {
+  margin-right: var(--flux-space-2);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
