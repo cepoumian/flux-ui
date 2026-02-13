@@ -1,8 +1,32 @@
 // playground/main.tsx
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { Button } from "../packages/flux-ui/src";
+import { Button, Link } from "../packages/flux-ui/src";
 
+interface NextLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  href: string;
+  children?: React.ReactNode;
+}
+
+function NextLink({ href, children, ...props }: NextLinkProps) {
+  return (
+    <a
+      {...props}
+      href={href}
+      onClick={(e) => {
+        e.preventDefault();
+        console.log(`🚀 Next.js Navigation to: ${href}`);
+        alert(`Would navigate to: ${href}`);
+      }}
+    >
+      {children}
+    </a>
+  );
+}
+
+// ========================================
+// Main App
+// ========================================
 function App() {
   return (
     <div style={{ padding: "2rem" }}>
@@ -12,7 +36,8 @@ function App() {
         Flux UI Playground
       </h1>
 
-      <div style={{ marginBottom: "1.5rem" }}>
+      {/* Buttons Section */}
+      <div style={{ marginBottom: "2rem" }}>
         <h2
           style={{
             fontSize: "1.125rem",
@@ -20,7 +45,7 @@ function App() {
             marginBottom: "0.5rem",
           }}
         >
-          Variants
+          Buttons
         </h2>
         <div style={{ display: "flex", gap: "0.5rem" }}>
           <Button variant="primary">Primary</Button>
@@ -30,7 +55,8 @@ function App() {
         </div>
       </div>
 
-      <div style={{ marginBottom: "1.5rem" }}>
+      {/* Links Section */}
+      <div style={{ marginBottom: "2rem" }}>
         <h2
           style={{
             fontSize: "1.125rem",
@@ -38,42 +64,112 @@ function App() {
             marginBottom: "0.5rem",
           }}
         >
-          Sizes
+          Links - All Variants
         </h2>
-        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-          <Button size="sm">Small</Button>
-          <Button size="md">Medium</Button>
-          <Button size="lg">Large</Button>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
+          <Link href="/about" variant="primary">
+            About Page (Primary)
+          </Link>
+
+          <Link href="https://ariakit.org" variant="primary">
+            Ariakit Docs (External - see arrow)
+          </Link>
+
+          <Link href="/dashboard" variant="subtle">
+            Dashboard (Subtle)
+          </Link>
+
+          <Link href="/privacy" variant="subtle">
+            Privacy Policy (Subtle)
+          </Link>
+        </div>
+
+        <p style={{ marginTop: "1rem" }}>
+          Check out the{" "}
+          <Link href="/guide" variant="inline">
+            complete guide
+          </Link>{" "}
+          for details. (Inline variant in text)
+        </p>
+      </div>
+
+      {/* Router Integration Section */}
+      <div
+        style={{
+          marginBottom: "2rem",
+          padding: "1rem",
+          backgroundColor: "#f0f9ff",
+          borderRadius: "0.5rem",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "1.125rem",
+            fontWeight: "600",
+            marginBottom: "0.5rem",
+          }}
+        >
+          🚀 Router Integration (render prop)
+        </h2>
+        <p
+          style={{
+            marginBottom: "1rem",
+            fontSize: "0.875rem",
+            color: "#374151",
+          }}
+        >
+          These links use the <code>render</code> prop to integrate with a
+          simulated Next.js router. Click them to see the console log!
+        </p>
+
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
+          <Link
+            href="/products"
+            variant="primary"
+            render={<NextLink href="/products" />}
+          >
+            Products Page (with render prop)
+          </Link>
+
+          <Link
+            href="/settings"
+            variant="subtle"
+            render={<NextLink href="/settings" />}
+          >
+            Settings (subtle + router)
+          </Link>
+
+          <p>
+            Navigate to{" "}
+            <Link
+              href="/docs/api"
+              variant="inline"
+              render={<NextLink href="/docs/api" />}
+            >
+              API documentation
+            </Link>{" "}
+            to learn more. (inline + router)
+          </p>
         </div>
       </div>
 
-      <div style={{ marginBottom: "1.5rem" }}>
-        <h2
-          style={{
-            fontSize: "1.125rem",
-            fontWeight: "600",
-            marginBottom: "0.5rem",
-          }}
-        >
-          States
-        </h2>
-        <div style={{ display: "flex", gap: "0.5rem" }}>
-          <Button isLoading>Loading...</Button>
-          <Button disabled>Disabled</Button>
-        </div>
-      </div>
-
-      <div>
-        <h2
-          style={{
-            fontSize: "1.125rem",
-            fontWeight: "600",
-            marginBottom: "0.5rem",
-          }}
-        >
-          Click Test
-        </h2>
-        <Button onClick={() => alert("Clicked!")}>Click Me</Button>
+      {/* Open Console Message */}
+      <div
+        style={{
+          padding: "1rem",
+          backgroundColor: "#fef3c7",
+          borderRadius: "0.5rem",
+          marginTop: "1rem",
+        }}
+      >
+        <p style={{ fontSize: "0.875rem" }}>
+          💡 <strong>Tip:</strong> Open your browser console (F12) and click the
+          router integration links above!
+        </p>
       </div>
     </div>
   );
