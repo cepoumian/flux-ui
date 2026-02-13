@@ -42,6 +42,7 @@
   color: var(--flux-color-text-primary);
 }
 
+/* Primary - Hover state */
 .flux-button--primary:hover:not([aria-disabled="true"]) {
   background-color: var(--flux-color-bg-primary-hover);
 }
@@ -52,6 +53,7 @@
   color: var(--flux-color-text-secondary);
 }
 
+/* Secondary - Hover state */
 .flux-button--secondary:hover:not([aria-disabled="true"]) {
   background-color: var(--flux-color-bg-secondary-hover);
 }
@@ -62,6 +64,7 @@
   color: var(--flux-color-text-ghost);
 }
 
+/* Ghost - Hover state */
 .flux-button--ghost:hover:not([aria-disabled="true"]) {
   background-color: var(--flux-color-bg-ghost-hover);
 }
@@ -72,6 +75,7 @@
   color: var(--flux-color-text-primary);
 }
 
+/* Danger - Hover state */
 .flux-button--danger:hover:not([aria-disabled="true"]) {
   background-color: var(--flux-color-bg-danger-hover);
 }
