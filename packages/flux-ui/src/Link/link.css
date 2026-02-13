@@ -1,0 +1,97 @@
+/* Base link styles */
+.flux-link {
+  display: inline;
+  position: relative;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  padding: var(--flux-space-1);
+  transition:
+    color var(--flux-transition-fast) var(--flux-transition-timing),
+    text-decoration-color var(--flux-transition-fast)
+      var(--flux-transition-timing);
+}
+
+/* Focus styles */
+.flux-link:focus-visible,
+.flux-link[data-focus-visible] {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: var(--flux-radius-sm);
+}
+
+/* Disabled styles */
+.flux-link[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* === VARIANTS === */
+
+/* Primary Variant */
+.flux-link--primary {
+  color: var(--flux-color-primary-600);
+  font-weight: var(--flux-font-weight-medium);
+}
+
+/* Primary - Hover state */
+.flux-link--primary:hover:not([aria-disabled="true"]) {
+  color: var(--flux-color-primary-700);
+  text-decoration: underline;
+}
+
+/* Primary - Active state */
+.flux-link--primary:active,
+.flux-link--primary[data-active] {
+  color: var(--flux-color-primary-800);
+  transform: scale(0.98);
+}
+
+/* Primary - Visited state */
+.flux-link--primary:visited {
+  color: var(--flux-color-primary-800);
+}
+
+/* Subtle Variant */
+.flux-link--subtle {
+  color: var(--flux-color-neutral-700);
+  font-weight: inherit;
+}
+
+/* Subtle - Hover state */
+.flux-link--subtle:hover:not([aria-disabled="true"]) {
+  color: var(--flux-color-primary-900);
+  text-decoration: underline;
+}
+
+/* Subtle - Active state */
+.flux-link--subtle:active,
+.flux-link--subtle[data-active] {
+  opacity: 0.5;
+}
+
+/* Inline Variant */
+.flux-link--inline {
+  color: var(--flux-color-primary-600);
+  font-weight: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--flux-color-primary-600);
+  text-decoration-thickness: 2px;
+}
+
+/* Inline - Hover state */
+.flux-link--inline:hover:not([aria-disabled="true"]) {
+  color: var(--flux-color-primary-700);
+  text-decoration-color: var(--flux-color-primary-700);
+}
+
+/* Inline - Active state */
+.flux-link--inline:active,
+.flux-link--inline[data-active] {
+  text-decoration-color: var(--flux-color-primary-800);
+}
