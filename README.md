@@ -43,10 +43,12 @@ npm run playground
 
 - **Button** - Accessible button with variants (primary, secondary, ghost, danger) and sizes (sm, md, lg)
 
+- **Link** - Polymorphic anchor component with variants (primary, subtle, inline), external URL detection, and router integration via the `render` prop
+
+- **SearchCombobox** - Filterable combobox with keyboard navigation, optional item descriptions, and size variants (sm, md, lg)
+
 ### Coming Soon
 
-- Link
-- SearchCombobox
 - Menu
 - Form components
 - Dialog
