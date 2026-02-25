@@ -1,0 +1,71 @@
+/* ─── Form wrapper ───────────────────────────────────────────────────────── */
+.flux-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--flux-space-4);
+}
+
+/* ─── Field group ────────────────────────────────────────────────────────── */
+.flux-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--flux-space-1);
+}
+
+/* ─── Label ──────────────────────────────────────────────────────────────── */
+.flux-form__label {
+  font-size: var(--flux-font-size-sm);
+  font-weight: var(--flux-font-weight-medium);
+  color: var(--flux-color-neutral-700);
+}
+
+/* ─── Input ──────────────────────────────────────────────────────────────── */
+.flux-form__input {
+  width: 100%;
+  padding: var(--flux-space-2) var(--flux-space-3);
+  border: 1px solid var(--flux-color-neutral-300);
+  border-radius: var(--flux-radius-md);
+  font-family: inherit;
+  font-size: var(--flux-font-size-base);
+  color: var(--flux-color-neutral-900);
+  background-color: white;
+  outline: none;
+  box-sizing: border-box;
+  transition:
+    border-color var(--flux-transition-fast) var(--flux-transition-timing),
+    box-shadow var(--flux-transition-fast) var(--flux-transition-timing);
+}
+
+/* Input — focus */
+.flux-form__input[data-focus-visible],
+.flux-form__input:focus-visible {
+  border-color: var(--flux-color-primary-600);
+  box-shadow: 0 0 0 3px var(--flux-color-primary-100);
+}
+
+/* Input — invalid */
+.flux-form__input[aria-invalid="true"] {
+  border-color: var(--flux-color-danger-600);
+  box-shadow: 0 0 0 3px #fee2e2;
+}
+
+/* Input — invalid + focused */
+.flux-form__input[aria-invalid="true"][data-focus-visible],
+.flux-form__input[aria-invalid="true"]:focus-visible {
+  border-color: var(--flux-color-danger-700);
+  box-shadow: 0 0 0 3px #fecaca;
+}
+
+/* Input — disabled */
+.flux-form__input[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--flux-color-neutral-50);
+}
+
+/* ─── Error message ──────────────────────────────────────────────────────── */
+.flux-form__error {
+  font-size: var(--flux-font-size-sm);
+  color: var(--flux-color-danger-600);
+  min-height: 1.25rem; /* prevents layout shift when error appears */
+}

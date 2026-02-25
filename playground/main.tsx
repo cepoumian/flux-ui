@@ -1,5 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { z } from "zod";
+import * as Ariakit from "@ariakit/react";
 import {
   Button,
   Link,
@@ -10,7 +12,15 @@ import {
   MenuSeparator,
   useMenuStore,
 } from "../packages/flux-ui/src";
-import * as Ariakit from "@ariakit/react";
+import {
+  FluxForm,
+  FluxFormLabel,
+  FluxFormInput,
+  FluxFormError,
+  FluxFormSubmit,
+  FluxFormField,
+  useFormStore,
+} from "../packages/flux-ui/src";
 
 // ========================================
 // Next.js Link simulation
@@ -185,6 +195,80 @@ function DisabledItemsDemo() {
 }
 
 // ========================================
+// Demo: Settings Form
+// ========================================
+
+const settingsSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email"),
+  role: z.enum(["viewer", "editor", "admin"], {
+    message: "Please select a valid role",
+  }),
+});
+
+function SettingsForm() {
+  const [saved, setSaved] = React.useState(false);
+
+  const form = useFormStore({
+    defaultValues: {
+      name: "",
+      email: "",
+      role: "viewer",
+    },
+  });
+
+  form.useValidate(() => {
+    const result = settingsSchema.safeParse(form.getState().values);
+
+    if (!result.success) {
+      for (const issue of result.error.issues) {
+        form.setError(issue.path[0] as string, issue.message);
+      }
+    }
+  });
+
+  form.useSubmit(() => {
+    console.log("Submitted!", form.getState().values);
+    setSaved(true);
+  });
+
+  if (saved) {
+    return <p>✅ Settings saved!</p>;
+  }
+
+  return (
+    <FluxForm store={form}>
+      {/* name field */}
+      <FluxFormField>
+        <FluxFormLabel name={form.names.name}>Name</FluxFormLabel>
+        <FluxFormInput name={form.names.name} type="text" />
+        <FluxFormError name={form.names.name} />
+      </FluxFormField>
+      {/* email field */}
+      <FluxFormField>
+        <FluxFormLabel name={form.names.email}>Email</FluxFormLabel>
+        <FluxFormInput name={form.names.email} type="email" />
+        <FluxFormError name={form.names.email} />
+      </FluxFormField>
+      {/* role field — native select via render prop */}
+      <FluxFormField>
+        <FluxFormLabel name={form.names.role}>Role</FluxFormLabel>
+        <FluxFormInput name={form.names.role} render={<select />}>
+          <option value="viewer">Viewer</option>
+          <option value="editor">Editor</option>
+          <option value="admin">Admin</option>
+        </FluxFormInput>
+        <FluxFormError name={form.names.role} />
+      </FluxFormField>
+      {/* submit button */}
+      <FluxFormSubmit variant="primary" size="lg">
+        Save Settings
+      </FluxFormSubmit>
+    </FluxForm>
+  );
+}
+
+// ========================================
 // Main App
 // ========================================
 function App() {
@@ -199,6 +283,20 @@ function App() {
       >
         Flux UI Playground
       </h1>
+
+      {/* ── SETTINGS FORM ── */}
+      <section style={{ marginBottom: "2.5rem" }}>
+        <h2
+          style={{
+            fontSize: "1.125rem",
+            fontWeight: "600",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Settings Form
+        </h2>
+        <SettingsForm />
+      </section>
 
       {/* ── MENU SECTION ── */}
       <section style={{ marginBottom: "2.5rem" }}>
