@@ -47,9 +47,10 @@ npm run playground
 
 - **SearchCombobox** - Filterable combobox with keyboard navigation, optional item descriptions, and size variants (sm, md, lg)
 
+- **Menu** - Accessible dropdown menu with full keyboard navigation, a danger variant for destructive actions, visual separator, and nested submenu support via `useMenuStore`
+
 ### Coming Soon
 
-- Menu
 - Form components
 - Dialog
 - CommandPalette
