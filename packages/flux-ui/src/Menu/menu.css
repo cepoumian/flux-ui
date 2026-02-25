@@ -1,0 +1,140 @@
+/* Menu button */
+.flux-menu__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--flux-space-2);
+  padding: var(--flux-space-2) var(--flux-space-4);
+  border-radius: var(--flux-radius-md);
+  font-family: inherit;
+  font-size: var(--flux-font-size-base);
+  font-weight: var(--flux-font-weight-medium);
+  border: 1px solid var(--flux-color-neutral-300);
+  background-color: white;
+  color: var(--flux-color-neutral-900);
+  cursor: pointer;
+  transition:
+    background-color var(--flux-transition-fast) var(--flux-transition-timing),
+    border-color var(--flux-transition-fast) var(--flux-transition-timing);
+}
+
+/* Button — hover */
+.flux-menu__button:hover:not([aria-disabled="true"]) {
+  background-color: var(--flux-color-neutral-50);
+  border-color: var(--flux-color-neutral-400);
+}
+
+/* Button — open state */
+.flux-menu__button[aria-expanded="true"] {
+  background-color: var(--flux-color-neutral-100);
+  border-color: var(--flux-color-neutral-400);
+}
+
+/* Button — active (pressed) */
+.flux-menu__button:active,
+.flux-menu__button[data-active] {
+  transform: scale(0.98);
+}
+
+/* Button — focus */
+.flux-menu__button[data-focus-visible] {
+  outline: 2px solid var(--flux-color-primary-600);
+  outline-offset: 2px;
+}
+
+/* Button — disabled */
+.flux-menu__button[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Menu popover */
+.flux-menu__popover {
+  background-color: white;
+  border: 1px solid var(--flux-color-neutral-200);
+  border-radius: var(--flux-radius-lg);
+  box-shadow: var(--flux-shadow-lg);
+  padding: var(--flux-space-1);
+  min-width: 160px;
+  z-index: var(--flux-z-dropdown);
+  overflow: hidden;
+
+  /* Enter animation — starting state */
+  opacity: 0;
+  transform: scale(0.97) translateY(-4px);
+  transition:
+    opacity var(--flux-transition-fast) var(--flux-transition-timing),
+    transform var(--flux-transition-fast) var(--flux-transition-timing);
+}
+
+/* Popover — entered state */
+.flux-menu__popover[data-enter] {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Menu items */
+.flux-menu__item {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--flux-space-2);
+  padding: var(--flux-space-2) var(--flux-space-3);
+  border-radius: var(--flux-radius-md);
+  font-family: inherit;
+  font-size: var(--flux-font-size-base);
+  color: var(--flux-color-neutral-900);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  transition: background-color var(--flux-transition-fast)
+    var(--flux-transition-timing);
+}
+
+/* Item — active (keyboard focus or hover) */
+.flux-menu__item[data-active-item] {
+  background-color: var(--flux-color-primary-50);
+  color: var(--flux-color-primary-700);
+}
+
+/* Item — focus visible */
+.flux-menu__item[data-focus-visible] {
+  outline: 2px solid var(--flux-color-primary-600);
+  outline-offset: -2px;
+}
+
+/* Item — disabled */
+.flux-menu__item[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Item — destructive variant (danger) */
+.flux-menu__item--danger {
+  color: var(--flux-color-danger-600);
+}
+
+.flux-menu__item--danger[data-active-item] {
+  background-color: #fff1f2;
+  color: var(--flux-color-danger-700);
+}
+
+/* Item — with submenu arrow (submenu) */
+.flux-menu__item--submenu {
+  justify-content: space-between;
+}
+
+.flux-menu__item-arrow {
+  font-size: var(--flux-font-size-sm);
+  color: var(--flux-color-neutral-700);
+  margin-left: auto;
+}
+
+/* Menu separator */
+.flux-menu__separator {
+  border: none;
+  border-top: 1px solid var(--flux-color-neutral-200);
+  margin: var(--flux-space-1) calc(-1 * var(--flux-space-1));
+}

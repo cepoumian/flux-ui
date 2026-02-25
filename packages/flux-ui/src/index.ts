@@ -8,3 +8,11 @@ export type { LinkProps } from "./Link";
 
 export { SearchCombobox } from "./SearchCombobox";
 export type { SearchComboboxProps } from "./SearchCombobox";
+
+export {
+  MenuButton,
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  useMenuStore,
+} from "./Menu";
