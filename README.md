@@ -49,9 +49,10 @@ npm run playground
 
 - **Menu** - Accessible dropdown menu with full keyboard navigation, a danger variant for destructive actions, visual separator, and nested submenu support via `useMenuStore`
 
+- **Form System** - Accessible form components including `FluxForm`, `FluxFormField`, `FluxFormLabel`, `FluxFormInput`, `FluxFormError`, and `FluxFormSubmit`. Supports controlled and uncontrolled patterns, Zod schema validation via `useFormStore`, and native element composition via the `render` prop (e.g. rendering a `<select>` through `FluxFormInput`).
+
 ### Coming Soon
 
-- Form components
 - Dialog
 - CommandPalette
 
