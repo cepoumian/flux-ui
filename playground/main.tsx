@@ -21,6 +21,13 @@ import {
   FluxFormField,
   useFormStore,
 } from "../packages/flux-ui/src";
+import {
+  FluxDialog,
+  FluxDialogTrigger,
+  FluxConfirmDialog,
+  useDialogStore,
+} from "../packages/flux-ui/src";
+import { ButtonVariants } from "../packages/flux-ui/src/Button/button.styles";
 
 // ========================================
 // Next.js Link simulation
@@ -269,6 +276,79 @@ function SettingsForm() {
 }
 
 // ========================================
+// Demo: Dialog
+// ========================================
+function DialogDemo() {
+  const infoDialog = useDialogStore();
+  const confirmDialog = useDialogStore();
+  const [deleted, setDeleted] = React.useState(false);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      {/* Basic dialog */}
+      <div>
+        <p
+          style={{
+            fontSize: "0.875rem",
+            color: "#6b7280",
+            marginBottom: "0.75rem",
+          }}
+        >
+          <strong>Basic dialog</strong> — opens, traps focus, closes on Escape
+          or backdrop click
+        </p>
+        <FluxDialogTrigger store={infoDialog} variant="secondary">
+          Open dialog
+        </FluxDialogTrigger>
+        <FluxDialog
+          store={infoDialog}
+          heading="Welcome to Flux UI"
+          description="This dialog traps focus inside and restores it to the trigger when closed."
+        >
+          <div className="flux-dialog__actions">
+            <Button variant="primary" onClick={infoDialog.hide}>
+              Got it
+            </Button>
+          </div>
+        </FluxDialog>
+      </div>
+
+      {/* Confirm dialog */}
+      <div>
+        <p
+          style={{
+            fontSize: "0.875rem",
+            color: "#6b7280",
+            marginBottom: "0.75rem",
+          }}
+        >
+          <strong>Confirm dialog</strong> — destructive action pattern
+        </p>
+        {deleted ? (
+          <p style={{ fontSize: "0.875rem", color: "#374151" }}>
+            ✅ Item deleted
+          </p>
+        ) : (
+          <>
+            <FluxDialogTrigger store={confirmDialog} variant="danger">
+              Delete item
+            </FluxDialogTrigger>
+            <FluxConfirmDialog
+              store={confirmDialog}
+              title="Delete item?"
+              description="This action cannot be undone. The item will be permanently removed."
+              confirmLabel="Delete"
+              confirmVariant="danger"
+              onConfirm={() => setDeleted(true)}
+            />
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ========================================
 // Main App
 // ========================================
 function App() {
@@ -283,6 +363,28 @@ function App() {
       >
         Flux UI Playground
       </h1>
+
+      {/* ── DIALOG ── */}
+      <section style={{ marginBottom: "2.5rem" }}>
+        <h2
+          style={{
+            fontSize: "1.125rem",
+            fontWeight: "600",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Dialog
+        </h2>
+        <DialogDemo />
+      </section>
+
+      <hr
+        style={{
+          border: "none",
+          borderTop: "1px solid #e5e7eb",
+          marginBottom: "2.5rem",
+        }}
+      />
 
       {/* ── SETTINGS FORM ── */}
       <section style={{ marginBottom: "2.5rem" }}>

@@ -1,0 +1,68 @@
+/* ─── Backdrop ───────────────────────────────────────────────────────────── */
+.flux-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0 0 0 / 0.5);
+  z-index: var(--flux-z-modal);
+
+  opacity: 0;
+  transition: opacity var(--flux-transition-base) var(--flux-transition-timing);
+}
+
+.flux-dialog-backdrop[data-enter] {
+  opacity: 1;
+}
+
+/* ─── Dialog ─────────────────────────────────────────────────────────────── */
+.flux-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: min(480px, calc(100vw - 2rem));
+  background-color: white;
+  border-radius: var(--flux-radius-lg);
+  box-shadow: var(--flux-shadow-lg);
+  padding: var(--flux-space-6);
+  z-index: calc(var(--flux-z-modal) + 1);
+
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity var(--flux-transition-base) var(--flux-transition-timing),
+    transform var(--flux-transition-base) var(--flux-transition-timing);
+}
+
+.flux-dialog[data-enter] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.flux-dialog[data-leave] {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* ─── Heading ────────────────────────────────────────────────────────────── */
+.flux-dialog__heading {
+  font-size: var(--flux-font-size-lg);
+  font-weight: var(--flux-font-weight-semibold);
+  color: var(--flux-color-neutral-900);
+  margin: 0 0 var(--flux-space-2);
+}
+
+/* ─── Description ────────────────────────────────────────────────────────── */
+.flux-dialog__description {
+  font-size: var(--flux-font-size-base);
+  color: var(--flux-color-neutral-700);
+  line-height: var(--flux-line-height-normal);
+  margin: 0 0 var(--flux-space-6);
+}
+
+/* ─── Actions ────────────────────────────────────────────────────────────── */
+.flux-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--flux-space-3);
+  margin-top: var(--flux-space-6);
+}
