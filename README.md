@@ -51,9 +51,10 @@ npm run playground
 
 - **Form System** - Accessible form components including `FluxForm`, `FluxFormField`, `FluxFormLabel`, `FluxFormInput`, `FluxFormError`, and `FluxFormSubmit`. Supports controlled and uncontrolled patterns, Zod schema validation via `useFormStore`, and native element composition via the `render` prop (e.g. rendering a `<select>` through `FluxFormInput`).
 
+- **Dialog** — Modal dialog components including `FluxDialog`, `FluxDialogTrigger`, and `FluxConfirmDialog`. Handles focus trapping, focus restoration, and Escape key closing automatically. Supports enter/exit animations via CSS, a customisable backdrop, and a `FluxConfirmDialog` abstraction for destructive action confirmation patterns.
+
 ### Coming Soon
 
-- Dialog
 - CommandPalette
 
 ## 🎨 Design System
