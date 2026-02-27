@@ -27,7 +27,10 @@ import {
   FluxConfirmDialog,
   useDialogStore,
 } from "../packages/flux-ui/src";
-import { ButtonVariants } from "../packages/flux-ui/src/Button/button.styles";
+import {
+  CommandPalette,
+  type Command,
+} from "../packages/flux-ui/src/CommandPalette";
 
 // ========================================
 // Next.js Link simulation
@@ -349,6 +352,70 @@ function DialogDemo() {
 }
 
 // ========================================
+// Demo: Command Palette
+// ========================================
+
+// Sample commands data
+const COMMANDS: Command[] = [
+  {
+    id: "1",
+    label: "New File",
+    category: "files",
+    description: "Create a new file",
+    onAction: () => alert("New File"),
+  },
+  {
+    id: "2",
+    label: "Open File",
+    category: "files",
+    description: "Open an existing file",
+    onAction: () => alert("Open File"),
+  },
+  {
+    id: "3",
+    label: "Save",
+    category: "actions",
+    description: "Save current file",
+    onAction: () => alert("Save"),
+  },
+  {
+    id: "4",
+    label: "Delete",
+    category: "actions",
+    description: "Delete selected item",
+    onAction: () => alert("Delete"),
+  },
+  {
+    id: "5",
+    label: "Go to Dashboard",
+    category: "navigation",
+    onAction: () => alert("Dashboard"),
+  },
+  {
+    id: "6",
+    label: "Go to Settings",
+    category: "navigation",
+    onAction: () => alert("Settings"),
+  },
+];
+
+// Temporary wrapper with a button trigger (until Cmd+K is wired)
+function CommandPaletteDemo() {
+  const dialog = Ariakit.useDialogStore();
+
+  return (
+    <div>
+      <Button variant="secondary" onClick={dialog.show}>
+        Open Command Palette{" "}
+        <kbd style={{ marginLeft: "0.5rem", fontSize: "0.75rem" }}>⌘K</kbd>
+      </Button>
+      {/* Temporarily passing the store down so the button can open it */}
+      <CommandPalette commands={COMMANDS} /* dialogStore={dialog} */ />
+    </div>
+  );
+}
+
+// ========================================
 // Main App
 // ========================================
 function App() {
@@ -363,6 +430,29 @@ function App() {
       >
         Flux UI Playground
       </h1>
+
+      {/* ── COMMAND PALETTE ── */}
+      <section style={{ marginBottom: "2.5rem" }}>
+        <h2
+          style={{
+            fontSize: "1.125rem",
+            fontWeight: "600",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Command Palette
+        </h2>
+        <p
+          style={{
+            fontSize: "0.875rem",
+            color: "#6b7280",
+            marginBottom: "1rem",
+          }}
+        >
+          Press <kbd>⌘K</kbd> to open
+        </p>
+        <CommandPalette commands={COMMANDS} />
+      </section>
 
       {/* ── DIALOG ── */}
       <section style={{ marginBottom: "2.5rem" }}>

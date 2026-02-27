@@ -53,9 +53,7 @@ npm run playground
 
 - **Dialog** — Modal dialog components including `FluxDialog`, `FluxDialogTrigger`, and `FluxConfirmDialog`. Handles focus trapping, focus restoration, and Escape key closing automatically. Supports enter/exit animations via CSS, a customisable backdrop, and a `FluxConfirmDialog` abstraction for destructive action confirmation patterns.
 
-### Coming Soon
-
-- CommandPalette
+- **CommandPalette** — Cmd+K activated modal combining Dialog, Combobox, and Tabs. Filters commands by search input and category tab, resets state on close, and is fully self-contained with no external trigger needed.
 
 ## 🎨 Design System
 

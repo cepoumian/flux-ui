@@ -38,3 +38,6 @@ export type {
   FluxDialogTriggerProps,
   FluxConfirmDialogProps,
 } from "./Dialog";
+
+export { CommandPalette } from "./CommandPalette";
+export type { CommandPaletteProps, Command } from "./CommandPalette";

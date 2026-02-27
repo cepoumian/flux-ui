@@ -1,0 +1,148 @@
+/* ─── Backdrop ───────────────────────────────────────────────────────────── */
+[data-backdrop] {
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0 0 0 / 0.5);
+  z-index: var(--flux-z-modal);
+
+  opacity: 0;
+  transition: opacity var(--flux-transition-base) var(--flux-transition-timing);
+}
+
+[data-backdrop][data-enter] {
+  opacity: 1;
+}
+
+/* ─── Dialog container ───────────────────────────────────────────────────── */
+.flux-command-palette {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  translate: -50% 0;
+  width: min(560px, calc(100vw - 2rem));
+  background-color: white;
+  border-radius: var(--flux-radius-lg);
+  box-shadow: var(--flux-shadow-lg);
+  z-index: calc(var(--flux-z-modal) + 1);
+  overflow: hidden;
+
+  opacity: 0;
+  transform: scale(0.97) translateY(-8px);
+  transition:
+    opacity var(--flux-transition-base) var(--flux-transition-timing),
+    transform var(--flux-transition-base) var(--flux-transition-timing);
+}
+
+.flux-command-palette[data-enter] {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.flux-command-palette[data-leave] {
+  opacity: 0;
+  transform: scale(0.97) translateY(-8px);
+}
+
+/* ─── Search input ───────────────────────────────────────────────────────── */
+.flux-command-palette__input {
+  width: 100%;
+  padding: var(--flux-space-4);
+  border: none;
+  border-bottom: 1px solid var(--flux-color-neutral-200);
+  font-family: inherit;
+  font-size: var(--flux-font-size-base);
+  color: var(--flux-color-neutral-900);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.flux-command-palette__input::placeholder {
+  color: var(--flux-color-neutral-400);
+}
+
+/* ─── Tab list ───────────────────────────────────────────────────────────── */
+.flux-command-palette__tabs {
+  display: flex;
+  gap: var(--flux-space-1);
+  padding: var(--flux-space-2) var(--flux-space-3);
+  border-bottom: 1px solid var(--flux-color-neutral-200);
+}
+
+.flux-command-palette__tabs [role="tab"] {
+  padding: var(--flux-space-1) var(--flux-space-3);
+  border-radius: var(--flux-radius-md);
+  font-family: inherit;
+  font-size: var(--flux-font-size-sm);
+  font-weight: var(--flux-font-weight-medium);
+  color: var(--flux-color-neutral-700);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--flux-transition-fast)
+    var(--flux-transition-timing);
+}
+
+.flux-command-palette__tabs [role="tab"]:hover {
+  background-color: var(--flux-color-neutral-100);
+  color: var(--flux-color-neutral-900);
+}
+
+.flux-command-palette__tabs [role="tab"][aria-selected="true"] {
+  background-color: var(--flux-color-primary-50);
+  color: var(--flux-color-primary-700);
+}
+
+.flux-command-palette__tabs [role="tab"][data-focus-visible] {
+  outline: 2px solid var(--flux-color-primary-600);
+  outline-offset: -2px;
+}
+
+/* ─── Results list ───────────────────────────────────────────────────────── */
+.flux-command-palette__list {
+  max-height: 320px;
+  overflow-y: auto;
+  padding: var(--flux-space-2);
+}
+
+/* ─── Empty state ────────────────────────────────────────────────────────── */
+.flux-command-palette__empty {
+  padding: var(--flux-space-6) var(--flux-space-4);
+  text-align: center;
+  font-size: var(--flux-font-size-sm);
+  color: var(--flux-color-neutral-400);
+}
+
+/* ─── Command item ───────────────────────────────────────────────────────── */
+.flux-command-palette__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--flux-space-1);
+  padding: var(--flux-space-2) var(--flux-space-3);
+  border-radius: var(--flux-radius-md);
+  cursor: pointer;
+  outline: none;
+  transition: background-color var(--flux-transition-fast)
+    var(--flux-transition-timing);
+}
+
+.flux-command-palette__item[data-active-item] {
+  background-color: var(--flux-color-primary-50);
+}
+
+.flux-command-palette__item-label,
+.flux-command-palette__item-description {
+  display: block;
+}
+
+.flux-command-palette__item-label {
+  font-size: var(--flux-font-size-base);
+  font-weight: var(--flux-font-weight-medium);
+  color: var(--flux-color-neutral-900);
+  margin: 0;
+}
+
+.flux-command-palette__item-description {
+  font-size: var(--flux-font-size-sm);
+  color: var(--flux-color-neutral-400);
+  margin: 0;
+}
